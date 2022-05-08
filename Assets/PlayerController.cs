@@ -8,10 +8,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveDirection;
     private Rigidbody2D rb;
     public float jumpForce;
+    public bool isJump;
+
     // Start is called before the first frame update
     void Start()
     {
-        jumpForce = 0.0007f;
+        isJump = false;
+        jumpForce = 7f;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -29,10 +32,25 @@ public class PlayerController : MonoBehaviour
 
     public void Jump()
     {
-         if(Input.GetButtonDown("Jump"))
+         if(Input.GetButtonDown("Jump") && isJump == false)
         {
             rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Ground"))
+        {
+            isJump = false;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isJump = true;
+        }
     
+    } 
 }
