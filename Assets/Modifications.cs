@@ -14,10 +14,14 @@ public class Modifications : MonoBehaviour
         {
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-
+            
             if (hit.collider != null)
             {
+                
                 objMod = hit.collider.gameObject;
+                if (objMod.gameObject.CompareTag("mod")){}
+                else objMod = null;
+                
             }
         }
         if (objMod != null)
@@ -31,9 +35,10 @@ public class Modifications : MonoBehaviour
 
             if (Input.GetKey(KeyCode.RightArrow) && scaleX <= maxScaleX)
             {
+                
                 float scale = 0.05f;
                 objMod.transform.localScale += new Vector3(scale/2, 0, 0);
-
+        
             }
             if (Input.GetKey(KeyCode.LeftArrow) && scaleX >= minScaleX)
             {
@@ -53,6 +58,7 @@ public class Modifications : MonoBehaviour
                 objMod.transform.localScale += new Vector3(0, -scale * 2, 0);
 
             }
+            
         }
     }
 }
