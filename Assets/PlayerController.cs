@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,13 +10,17 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public float jumpForce;
     public bool isJump;
+    public int life;
+    public SpriteRenderer sprPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
+        sprPlayer = GetComponent<SpriteRenderer>();
         isJump = false;
         jumpForce = 7f;
         rb = GetComponent<Rigidbody2D>();
+        life = 3;
     }
 
     private void Update()
@@ -42,7 +47,10 @@ public class PlayerController : MonoBehaviour
     {
         
             isJump = false;
-        
+        if (collision.gameObject.CompareTag("Fase2"))
+        {
+            SceneManager.LoadScene("Fase2");
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -50,5 +58,23 @@ public class PlayerController : MonoBehaviour
             isJump = true;
         
     
-    } 
+    }
+
+    public void DamagePlayer(int damageBullet)
+    {
+        life -= damageBullet;
+        StartCoroutine(Damage());
+        if (life <= 0)
+        {
+            Application.LoadLevel(Application.loadedLevel);
+        }
+
+    }
+
+    IEnumerator Damage()
+    {
+        sprPlayer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sprPlayer.color = Color.white;
+    }
 }

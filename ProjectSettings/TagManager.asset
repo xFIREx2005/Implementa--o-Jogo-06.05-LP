@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - mod
+  - Fase2
+  - Fase1
   layers:
   - Default
   - TransparentFX
