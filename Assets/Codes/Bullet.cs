@@ -30,6 +30,13 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
 
         }
-        if (collision.gameObject.tag == "Colisao") Destroy(gameObject);
+        if (collision.gameObject.tag == "Ground")
+        {
+            if (collision.CompareTag("Ground"))
+            { 
+                    Destroy(gameObject);
+                
+            }
+        }
     }
 }
