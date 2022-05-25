@@ -13,11 +13,11 @@ public class Modifications : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+            RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero, 9);
+
             
             if (hit.collider != null)
             {
-                
                 objMod = hit.collider.gameObject;
                 if (objMod.gameObject.CompareTag("mod")){}
                 else objMod = null;

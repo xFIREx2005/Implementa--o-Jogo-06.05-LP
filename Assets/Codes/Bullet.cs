@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
             if (collision.CompareTag("Ground"))
             { 
                     Destroy(gameObject);
-                
+
             }
         }
     }

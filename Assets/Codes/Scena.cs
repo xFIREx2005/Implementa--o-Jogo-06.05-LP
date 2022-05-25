@@ -8,7 +8,15 @@ public class Scena : MonoBehaviour
 {
 
     public string cenaName;
+    public bool apertaTroca;
 
+    private void Update()
+    {
+        if(apertaTroca == true && Input.GetButtonDown("Jump"))
+        {
+            SceneManager.LoadScene(cenaName);
+        }
+    }
 
     public void Play()
     {
