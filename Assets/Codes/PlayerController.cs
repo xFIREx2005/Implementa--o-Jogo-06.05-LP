@@ -51,6 +51,10 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("Fase2");
         }
+        if (collision.gameObject.CompareTag("Cena Final"))
+        {
+            SceneManager.LoadScene("Cena Final");
+        }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

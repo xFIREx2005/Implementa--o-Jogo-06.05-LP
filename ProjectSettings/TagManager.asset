@@ -9,6 +9,7 @@ TagManager:
   - Fase2
   - Fase1
   - Colisao
+  - Cena Final
   layers:
   - Default
   - TransparentFX
