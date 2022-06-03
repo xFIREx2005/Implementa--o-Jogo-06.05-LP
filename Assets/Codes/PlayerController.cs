@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public bool isJump;
     public int life;
     public SpriteRenderer sprPlayer;
+    public Text txtlife;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     {
          Move();
          Jump();
+        txtlife.text = "VIDAS: " + life;
     }
 
        public void Move()
